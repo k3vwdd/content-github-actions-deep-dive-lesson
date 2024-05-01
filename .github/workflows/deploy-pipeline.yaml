@@ -71,6 +71,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
+        outputs:
+          version: ${{ steps.step_version.outputs.version }}
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./${{ github.sha }}.zip
           asset_name: source_cide_with_libraries.zip
