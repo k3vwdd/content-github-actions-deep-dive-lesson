@@ -40,7 +40,7 @@ jobs:
             cd function
             zip -r ../${{ github.sha }}.zip .
       - name: Archive artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upathpload-artifact@v2
         with:
           name: zipped-bundle
           path: ${{ github.sha }}.zip
@@ -60,13 +60,14 @@ jobs:
           body: New Release for ${{ github.sha }}. Release notes on the documentation site
           draft: false
           prerelease: false
+
       - name: download artifact
         uses: actions/download-artifact@v2
         with:
           name: zipped-bundle
 
       - name: upload release asset
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.github_token }}
         with:
