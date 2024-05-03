@@ -1,10 +1,10 @@
 name: Deploy feature branches to nonproduction bucket
 
-
 on:
-push:
-branches:
-  - feature*
+  push:
+    branches:
+      - 'feature*'
+
 
 jobs:
   build:
