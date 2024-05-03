@@ -11,7 +11,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.12
       - name: Install Linting libraries
         run: |
             cd function
@@ -33,7 +33,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.12
       - name: Install libraries
         run: |
             cd function
