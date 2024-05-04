@@ -25,12 +25,10 @@ jobs:
       - name: build site
         run: |
           npm init -y
-          pwd
+          echo '{"scripts": {"build": "echo Building... (define your build steps here)"}}' >> package.json
           touch package-lock.json
           npm install ci
           npm ci
-          pwd
-          ls -al
           npm run build
       - name: deploy files to bucket
         run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
