@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BUCKET_NAME: cfst-3457-638ea56ad41f789657f21447a7-nonprodbucket-5hnu9tkpqnwq
+      BUCKET_NAME: cfst-3457-0a4d035c7a23f54bb5a7f5c248-nonprodbucket-ymkd5aqyspwn
     steps:
       - name: check out code
         uses: actions/checkout@v2
@@ -25,6 +25,7 @@ jobs:
           node-version: 14
       - name: build site
         run: |
+          npm init -y
           npm ci
           npm run build
       - name: deploy files to bucket
