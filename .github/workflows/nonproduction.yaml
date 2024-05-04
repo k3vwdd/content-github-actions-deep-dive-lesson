@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 14
       - name: Change to project directory
-        run: cd /home/runner/work/content-github-actions-deep-dive-lesson/
+        run: cd /home/runner/work/
       - name: build site
         run: |
           npm ci
