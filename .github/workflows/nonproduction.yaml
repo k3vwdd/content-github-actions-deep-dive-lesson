@@ -25,6 +25,7 @@ jobs:
           node-version: 14
       - name: build site
         run: |
+          npm init -y
           npm install --package-lock-only
           npm ci
           npm run build
