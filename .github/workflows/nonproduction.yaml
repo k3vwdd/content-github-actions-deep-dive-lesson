@@ -19,16 +19,13 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
-      - name: setup node.js
-        uses: actions/setup-node@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 14
-      - name: build site and install libs
-        run: npm ci
-        working-directory:
-      - name: build
-        run: npm run build
-        working-directory:
+          node-version: '20.x'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
       - name: deploy files to bucket
         run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
 
