@@ -19,22 +19,18 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: create package and setup basic package.json file
-        run: |
-          npm init -y
-      - name: set up node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Install dependencies with npm ci or npm install
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
       - name: build site
         run: |
+          npm init -y
+          pwd
+          touch package-lock.json
+          npm install ci
           npm ci
+          pwd
+          ls -al
           npm run build
       - name: deploy files to bucket
         run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
