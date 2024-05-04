@@ -25,6 +25,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+      - name: Install dependencies with npm ci or npm install
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci
+          else
+            npm install
+          fi
       - name: build site
         run: |
           npm ci
