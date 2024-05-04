@@ -12,7 +12,7 @@ jobs:
       BUCKET_NAME: cfst-3457-0a4d035c7a23f54bb5a7f5c248-nonprodbucket-ymkd5aqyspwn
     steps:
       - name: check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: configure aws cli
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -25,8 +25,8 @@ jobs:
           node-version: 14
       - name: build site
         run: |
-            npm i -g ci
-            npm run build
+          npm ci
+          npm run build
       - name: deploy files to bucket
         run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
 
