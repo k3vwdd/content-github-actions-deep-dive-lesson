@@ -25,10 +25,10 @@ jobs:
           node-version: 14
       - name: build site and install libs
         run: npm ci
-        working-directory: ./home/runner/work/content-github-actions-deep-dive-lesson/content-github-actions-deep-dive-lesson
+        working-directory:
       - name: build
         run: npm run build
-        working-directory: ./home/runner/work/content-github-actions-deep-dive-lesson/content-github-actions-deep-dive-lesson
+        working-directory:
       - name: deploy files to bucket
         run: aws s3 cp public s3://${{ env.BUCKET_NAME }} --recursive --acl public-read
 
