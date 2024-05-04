@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v2
+      - name: List directory contents
+        run: ls -la && pwd
       - name: configure aws cli
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -19,13 +21,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: List directory contents
-        run: ls -la
+        run: ls -la && pwd
       - name: set up node.js
         uses: actions/setup-node@v2
         with:
           node-version: 14
       - name: build site
         run: |
+          pwd
           ls -la
           npm ci
           npm run build
